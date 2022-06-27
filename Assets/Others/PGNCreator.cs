@@ -1,28 +1,9 @@
 using System;
-using System.IO;
-using System.Text;
 
 using Game.Chess;
 
 namespace Others {
     class PGNCreator {
-        private Board board;
-        private Move[] moves;
-        private Board.BoardState result;
-
-        public PGNCreator(Move[] moves, Board.BoardState result) {
-            this.moves = moves;
-            this.result = result;
-        }
-        public void Save(string path) {
-            if(File.Exists(path)) {
-                File.Delete(path);
-            }
-            
-            using (StreamWriter sw = File.CreateText(path)) {
-                sw.Write(PGNCreator.Create(this.moves, this.result));
-            }
-        }
 
         static public string Create(Move[] moves, Board.BoardState result) {
             Board board = Board.CreateInitialPosition();

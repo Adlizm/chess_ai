@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -53,7 +54,7 @@ namespace UI {
 			promotionType = (byte) 0;
 
 			if(mouseWorld.y >= -2.0f && mouseWorld.y < 2.0f) {
-				if(mouseWorld.x >= -5.5f && mouseWorld.x < -4.5f) {
+				if(mouseWorld.x >= 4.05f && mouseWorld.x < 5.05f) {
 					int type = (int) Mathf.Floor(mouseWorld.y + 2);
 					switch(type) {
 						case 3: 
@@ -97,6 +98,26 @@ namespace UI {
 			squarePieceRenderers[pieceCoord.row, pieceCoord.col].transform.position = pos;
 		}
 
+		public IEnumerator AnimateMove(Move move) {
+			float t = 0;
+			const float moveAnimDuration = 0.15f;
+
+			Coord selectedCoord = Coord.CoordToBoardIndex(move.selected);
+			Coord targetCoord = Coord.CoordToBoardIndex(move.target);
+
+			Transform pieceT = squarePieceRenderers[selectedCoord.row, selectedCoord.col].transform;
+
+			Vector3 startPos = PositionFromCoord(selectedCoord);
+			Vector3 targetPos = PositionFromCoord(targetCoord);
+
+
+			while(t <= 1) {
+				yield return null;
+				t += Time.deltaTime * 1 / moveAnimDuration;
+				pieceT.position = Vector3.Lerp(startPos, targetPos, t);
+			}
+		}
+
 		public void SelectSquare(Coord coord) {
 			SetSquareColour(coord, boardTheme.Selected);
 		}
@@ -136,7 +157,11 @@ namespace UI {
 
 		}
 
-		public void MoveMade() {
+		
+		public void OnMoveMade(Move move, bool animate = false) {
+			if(animate) {
+				StartCoroutine(AnimateMove(move));
+			}
 			UpdatePosition();
 			ResetSquareColours();
 		}
@@ -150,14 +175,14 @@ namespace UI {
 				Transform square = GameObject.CreatePrimitive(PrimitiveType.Quad).transform;
 				square.parent = this.transform;
 				square.name = "Promotion Piece";
-				square.position = new Vector3(-5.0f, -1.5f + i);
+				square.position = new Vector3(4.55f, -1.5f + i);
 
 				squaresPromotions[i] = square.GetComponent<MeshRenderer>();
 				squaresPromotions[i].material = new Material(squareShader);
 
 				spritesPromotions[i] = new GameObject("Promotion Type").AddComponent<SpriteRenderer>();
 				spritesPromotions[i].transform.parent = square;
-				spritesPromotions[i].transform.position = new Vector3(-5.0f, -1.5f + i, PieceDepth);
+				spritesPromotions[i].transform.position = new Vector3(4.55f, -1.5f + i, PieceDepth);
 				spritesPromotions[i].transform.localScale = Vector3.one * (100 / 180f);
 			}
 		}
@@ -216,10 +241,8 @@ namespace UI {
 				whiteColor = !whiteColor;
 			}
 
-			for(int i = 0; i < 4; i++) {
-				Color squareColor = (i % 2) == 0 ? boardTheme.WhiteSquares : boardTheme.BlackSquares;
-				squaresPromotions[i].material.color = squareColor;
-			}
+			for(int i = 0; i < 4; i++) 
+				squaresPromotions[i].material.color = boardTheme.LegalMoves;
 		}
 
 		private void SetSquareColour(Coord square, Color color) {

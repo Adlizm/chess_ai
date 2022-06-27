@@ -79,8 +79,10 @@ namespace Game.Players {
                     if(promotionType != 0) {
                         byte selectIndex = squareSelected.toBoardIndex();
                         byte targetIndex = squareTarget.toBoardIndex();
-                        this.choseMove(new Move(selectIndex, targetIndex, promotionType));
-                        this.boardUI.MoveMade();
+                        Move move = new Move(selectIndex, targetIndex, promotionType);
+
+                        this.choseMove(move);
+                        this.boardUI.OnMoveMade(move);
 
                         this.boardUI.ClosePromotions();
                         inputState = InputState.None;
@@ -95,9 +97,12 @@ namespace Game.Players {
                 byte selectIndex = squareSelected.toBoardIndex();
                 byte targetIndex = squareTarget.toBoardIndex();
 
+                Move moveSelected = new Move(0, 0, 0);
+
                 Piece piece = this.board[selectIndex];
                 if(piece.IsPawn || piece.IsKing) {
                     List<Move> moves = this.board.GetValidPieceMoves(selectIndex);
+                    
 
                     foreach(Move move in moves) {
                         if(move.target == targetIndex) {
@@ -107,16 +112,19 @@ namespace Game.Players {
                                 this.boardUI.ShowPromotions();
                             } else {
                                 this.inputState = InputState.None;
-                                this.choseMove(move);
+                                moveSelected = move;
+                                this.choseMove(moveSelected);
+                                
                             }
                             break;
                         }
                     }
                 } else {
                     this.inputState = InputState.None;
-                    this.choseMove(new Move(selectIndex, targetIndex, Move.NORMAL));
+                    moveSelected = new Move(selectIndex, targetIndex, Move.NORMAL);
+                    this.choseMove(moveSelected);
                 }
-                this.boardUI.MoveMade();
+                this.boardUI.OnMoveMade(moveSelected);
             } else {
                 this.boardUI.ResetPiecePosition(squareSelected);
             }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f2b35432cc18b449be803d44a64ec6, type: 3}
   m_Name: BoardThemeDefault
   m_EditorClassIdentifier: 
-  WhiteSquares: {r: 0.933347, g: 1, b: 0.8160377, a: 0}
-  BlackSquares: {r: 0.063412234, g: 0.5377358, b: 0.104337715, a: 0}
-  LegalMoves: {r: 0.5562478, g: 0.9433962, b: 0.769488, a: 0}
-  Selected: {r: 0.72157234, g: 0.9622642, b: 0.48567107, a: 0}
+  WhiteSquares: {r: 1, g: 0.8891509, b: 0.8443396, a: 0}
+  BlackSquares: {r: 0.6132076, g: 0.35030305, b: 0.24586153, a: 0}
+  LegalMoves: {r: 0.94509804, g: 0.7769489, b: 0.5568628, a: 0}
+  Selected: {r: 0.8396226, g: 0.62803674, b: 0.35248306, a: 0}

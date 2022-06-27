@@ -6,20 +6,6 @@ using Game.Chess;
 
 namespace Others {
     public class PGNLoader {
-        private string filepath;
-        
-        public PGNLoader(string filepath) {
-            this.filepath = filepath;
-        }
-        public void Load(out List<Move> moves, out Board.BoardState result) {
-            string[] lines = System.IO.File.ReadAllLines(this.filepath);
-            string pgn = "";
-
-            for(int i = 0; i < lines.Length; i++) 
-                pgn += lines[i] + '\n';
-            
-            PGNLoader.Load(pgn, out moves, out result);
-        }
 
         static public void Load(string pgn, out List<Move> moves, out Board.BoardState result) {
             string pgnClear = RemoveCommentsAndLabels(pgn);
@@ -34,7 +20,7 @@ namespace Others {
             for(int i = 0; i < words.Length; i++) {
                 string entry = words[i].Trim();
 
-                if(entry.Contains(".")) {
+                if(entry.Contains(".") && !entry.Contains("e.p")) {
                     continue;
                 }
                 if(entry.Contains("1-0")) {
