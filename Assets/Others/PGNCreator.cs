@@ -1,44 +1,44 @@
 using System;
 
-using Game.Chess;
+using Core.Chess;
 
 namespace Others {
     class PGNCreator {
 
-        static public string Create(Move[] moves, Board.BoardState result) {
-            Board board = Board.CreateInitialPosition();
+        static public string Create(Move[] moves, Game.GameState result) {
+            Game game = Game.CreateInitialPosition();
             string pgn = "";
 
-            for(int round = 1, i = 0; i < moves.Length; i++) {
-                if(i % 2 == 0) {
-                    pgn += (round + ". ");
-                    round++;
-                }
-                string moveString = MoveToStringNotation(board, moves[i]);
+            for(int i = 0; i < moves.Length; i++) {
+                if(i % 2 == 0) 
+                    pgn += (game.Rounds + ". ");
+
+                string moveString = MoveToStringNotation(game, moves[i]);
                 pgn += moveString + " ";
 
-                if(board.GetBoardState() != Board.BoardState.Playing) {
+                game.TryMakeMove(moves[i]);
+                if(game.CurrentState != Game.GameState.Playing) {
                     break;
                 }
             }
             switch(result) {
-                case Board.BoardState.WhiteWin:
+                case Game.GameState.WhiteWin:
                     pgn += "1-0";
                     break;
-                case Board.BoardState.BlackWin:
+                case Game.GameState.BlackWin:
                     pgn += "0-1";
                     break;
-                case Board.BoardState.Draw:
+                case Game.GameState.Draw:
                     pgn += "1/2-1/2";
                     break;
             }
             return pgn;
         }
 
-        static public string MoveToStringNotation(Board board, Move move) {
+        static public string MoveToStringNotation(Game game, Move move) {
             string msn = "";
 
-            Board copy = board.copy();
+            Game copy = game.Copy();
             if(copy.TryMakeMove(move)) {
                 if(copy.KingInCheck) {
                     if(copy.GetAllValidMoves().Count == 0)
@@ -76,20 +76,20 @@ namespace Others {
             char row = (char) ('1' + (7 - move.target/8));
             msn = col + row + msn;
 
-            if(board[move.target].IsPiece || move.type == Move.EN_PASSANT) {
+            if(game[move.target].IsPiece || move.type == Move.EN_PASSANT) {
                 msn = "x" + msn;
-                if(board[move.selected].IsPawn) {
+                if(game[move.selected].IsPawn) {
                     char pawnCol = (char) ('a' + (move.selected % 8));
                     return pawnCol + msn;
                 }
             }
 
-            msn = OriginMoveString(board, move) + msn;
+            msn = OriginMoveString(game, move) + msn;
             return msn;
         }
 
-        static private string PieceString(Board board, Move move) {
-            Piece piece = board[move.selected];
+        static private string PieceString(Game game, Move move) {
+            Piece piece = game[move.selected];
             byte type = piece.Type;
             switch(type) {
                 case Piece.Queen:
@@ -107,14 +107,14 @@ namespace Others {
             }
             return "";
         }
-        static private string OriginMoveString(Board board, Move move) {
-            Piece selected = board[move.selected];
-            string str = PieceString(board, move);
+        static private string OriginMoveString(Game game, Move move) {
+            Piece selected = game[move.selected];
+            string str = PieceString(game, move);
 
             for(int i = 0; i < 64; i++) {
-                Piece other = board[i];
+                Piece other = game[i];
                 if(selected == other) {
-                    foreach(Move validMove in board.GetValidPieceMoves((byte) i)) {
+                    foreach(Move validMove in game.GetValidPieceMoves((byte) i)) {
                         if(validMove.target == move.target) {
                             if(validMove.selected % 8 != move.selected % 8) {
                                 char col = (char) ('a' + (move.selected % 8));

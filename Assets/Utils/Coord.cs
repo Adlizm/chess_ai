@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Utils {
+namespace Utils {
     public struct Coord {
         public int row;
         public int col;
@@ -12,10 +12,10 @@ namespace Game.Utils {
             this.col = col;
         }
 
-        public byte toBoardIndex() {
+        public byte ToBoardIndex() {
             return (byte) (8 * row + col);
         }
-        public bool isWhiteSquare() {
+        public bool IsWhiteSquare() {
             return (row + col) % 2 == 0;
         }
         public static Coord CoordToBoardIndex(byte index) {

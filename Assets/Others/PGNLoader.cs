@@ -2,21 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Game.Chess;
+using Core.Chess;
 
 namespace Others {
     public class PGNLoader {
 
-        static public void Load(string pgn, out List<Move> moves, out Board.BoardState result) {
+        static public void Load(string pgn, out List<Move> moves, out Game.GameState result) {
             string pgnClear = RemoveCommentsAndLabels(pgn);
             string[] words = pgnClear.Replace("\n", " ").Split(' ');
 
-            Board board = null;
+            Game game = null;
             List<string> entrys = new List<string>();
-            bool resultExist = false;
 
-
-            result = Board.BoardState.Draw;
+            result = Game.GameState.Playing;
             for(int i = 0; i < words.Length; i++) {
                 string entry = words[i].Trim();
 
@@ -24,16 +22,13 @@ namespace Others {
                     continue;
                 }
                 if(entry.Contains("1-0")) {
-                    result = Board.BoardState.WhiteWin;
-                    resultExist = true;
+                    result = Game.GameState.WhiteWin;
                     break;
                 } else if(entry.Contains("0-1")) {
-                    result = Board.BoardState.BlackWin;
-                    resultExist = true;
+                    result = Game.GameState.BlackWin;
                     break;
                 } else if (entry.Contains("1/2-1/2")) {
-                    result = Board.BoardState.Draw;
-                    resultExist = true;
+                    result = Game.GameState.Draw;
                     break;
                 }
 
@@ -42,28 +37,16 @@ namespace Others {
                 }
             }
 
-            moves = EntrysToMoves(entrys, out board);
-            var state = board.GetBoardState();
-
-            if(state != Board.BoardState.Playing) {
-                if(resultExist) {
-                    if(state != result)
-                        throw new Exception("Result does not match current board state");
-                } else {
-                    throw new Exception("Game result not explicit");
-                }
-            } else {
-                result = board.GetBoardState();
-            }
+            moves = EntrysToMoves(entrys, out game);
         }
 
-        static private List<Move> EntrysToMoves(List<string> entrys, out Board board) {
+        static private List<Move> EntrysToMoves(List<string> entrys, out Game game) {
             List<Move> moves = new List<Move>();    
-            board = Board.CreateInitialPosition();
+            game = Game.CreateInitialPosition();
 
             foreach(string entry in entrys) {
-                Move move = EntryToMove(board, entry);
-                if(board.TryMakeMove(move)) {
+                Move move = EntryToMove(game, entry);
+                if(game.TryMakeMove(move)) {
                     moves.Add(move);
                 }
             }
@@ -103,11 +86,11 @@ namespace Others {
             return pgn;
         }
 
-        static public Move EntryToMove(Board board, string entry) {
-            List<Move> valids = board.GetAllValidMoves();
+        static public Move EntryToMove(Game game, string entry) {
+            List<Move> valids = game.GetAllValidMoves();
 
             foreach(Move valid in valids) {
-                string msn = PGNCreator.MoveToStringNotation(board, valid);
+                string msn = PGNCreator.MoveToStringNotation(game, valid);
                 if(msn.Equals(entry))
                     return valid;
             }

@@ -1,6 +1,4 @@
 using UnityEngine;
-using Game.Chess;
-
 
 namespace UI {
 	[CreateAssetMenu(menuName = "Theme/Board")]

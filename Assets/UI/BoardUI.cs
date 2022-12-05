@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-using Game.Chess;
-using Game.Utils;
+using Core.Chess;
+using Utils;
 
 namespace UI {
 	public class BoardUI : MonoBehaviour {
@@ -27,18 +27,18 @@ namespace UI {
 		private SpriteRenderer[] spritesPromotions;
 
 		void Awake() {
-			this.board = Board.CreateInitialPosition();
+			this.board = Game.CreateInitialPosition().GetPosition(0);
+
 			CreatePromotionUIBox();
 			CreateBoardUI();
 
 			ClosePromotions();
 		}
 
-		public void ShowPromotions() {
+		public void ShowPromotions(byte color) {
 			for(int i = 0; i < 4; i++)
 				squaresPromotions[i].transform.localScale = new Vector3(0.3106097f, 0.3382822f, 0.0f);	
 
-			byte color = this.board.TimeOf;
 			spritesPromotions[3].sprite = piecesTheme.GetPieceSprite(new Piece((byte) (Piece.Queen | color)));
 			spritesPromotions[2].sprite = piecesTheme.GetPieceSprite(new Piece((byte) (Piece.Tower | color)));
 			spritesPromotions[1].sprite = piecesTheme.GetPieceSprite(new Piece((byte) (Piece.Bishop | color)));
@@ -76,11 +76,8 @@ namespace UI {
 			return false;
 		}
 
-		public void HighlightLegalMoves(Coord fromSquare) {
+		public void HighlightMoves(List<Move> moves) {
 			if(this.ShowLegalMoves) {
-				byte squareIndex = fromSquare.toBoardIndex();
-				List<Move> moves = this.board.GetValidPieceMoves(squareIndex);
-
 				foreach(Move move in moves) {
 					Coord coord = Coord.CoordToBoardIndex(move.target);
 					SetSquareColour(coord, boardTheme.LegalMoves);
@@ -123,7 +120,7 @@ namespace UI {
 		}
 
 		public void DeselectSquare(Coord coord) {
-			bool white = coord.isWhiteSquare();
+			bool white = coord.IsWhiteSquare();
 			white  = WhitePointOfView ? !white : white;
 			Color squareColor = white ? boardTheme.WhiteSquares : boardTheme.BlackSquares;
 			SetSquareColour(coord, squareColor);
@@ -149,14 +146,13 @@ namespace UI {
 			for(int row = 0; row < 8; row++) {
 				for(int col = 0; col < 8; col++) {
 					Coord coord = new Coord(row, col);
-					Piece piece = this.board[coord.toBoardIndex()];
+					Piece piece = this.board[coord.ToBoardIndex()];
 					squarePieceRenderers[row, col].sprite = piecesTheme.GetPieceSprite(piece);
 					squarePieceRenderers[row, col].transform.position = PositionFromCoord(row, col, PieceDepth);
 				}
 			}
 
 		}
-
 		
 		public void OnMoveMade(Move move, bool animate = false) {
 			if(animate) {

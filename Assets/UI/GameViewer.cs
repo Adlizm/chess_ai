@@ -4,31 +4,30 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-using Game.Chess;
+using Core.Chess;
 using UI;
+using Others;
 
-namespace Others {
+namespace UI {
     public class GameViewer : MonoBehaviour {
         [Multiline]
         public string pgn;
     
         private BoardUI boardUI;
+        private Game game;
 
-        private List<Board> boards;
         private List<Move> moves;
-
-        private Board.BoardState result;
-
         private int moveIndex;
 
         void Start() {
             try {
+                Game.GameState result;
                 PGNLoader.Load(pgn, out moves, out result);
-                boards = new List<Board>();
-                boards.Add(Board.CreateInitialPosition());
+
+                this.game = Game.CreateInitialPosition();
                 moveIndex = 0;
 
-                boardUI.SetNewPosition(boards[0]);
+                boardUI.SetNewPosition(game.GetPosition(0));
             } catch(Exception e){
                 Console.WriteLine(e.Message);
 			}
@@ -37,22 +36,20 @@ namespace Others {
         void Update() {
             if(Input.GetKeyDown(KeyCode.RightArrow)) {
                 if(moveIndex < moves.Count) {
-                    Board copy = moveIndex >= boards.Count ? this.boards[moveIndex].copy() : boards[moveIndex];
-                    
-                    boardUI.SetNewPosition(copy);
-                    copy.TryMakeMove(moves[moveIndex]);
+                    if(moveIndex >= game.TotalPositions - 1)
+                        if (game.TryMakeMove(moves[moveIndex]))
+                            moveIndex++;
+                    else
+                        moveIndex++;
 
+                    boardUI.SetNewPosition(game.GetPosition(moveIndex));
                     boardUI.OnMoveMade(moves[moveIndex], true);
-
-                    if(moveIndex >= boards.Count)
-                        this.boards.Add(copy);
-                    moveIndex++;
                 }
             }
             if(Input.GetKeyDown(KeyCode.LeftArrow)) {
                 if(moveIndex > 0) {
                     moveIndex--;
-                    this.boardUI.SetNewPosition(this.boards[moveIndex]);
+                    this.boardUI.SetNewPosition(game.GetPosition(moveIndex));
                 }
             }
         }

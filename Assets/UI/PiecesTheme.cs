@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Chess;
+using Core.Chess;
 
 namespace UI {
 	[CreateAssetMenu(menuName = "Theme/Pieces")]

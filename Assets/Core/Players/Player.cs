@@ -1,16 +1,15 @@
 using System;
 
-using Game.Chess;
+using Core.Chess;
 using UI;
 
-namespace Game.Players {
+namespace Core.Players {
     public enum TypePlayers {
         Human, AI
     }
 
     public abstract class Player {
-        protected Board board;
-        protected BoardUI boardUI;
+        protected Game game;
         private byte color;
 
         public delegate void ChoseMove(Move move);
@@ -27,16 +26,17 @@ namespace Game.Players {
             this.requestDraw = draw;
             this.admitDefeat = defeat;
         }
-
-        public void SetBoard(Board board, BoardUI boardUI) {
-            this.board = board;
-            this.boardUI = boardUI;
+        public void SetGame(Game game) {
+            this.game = game;
+        }
+        public byte Color {
+            get => this.color;
         }
 
         abstract public void NotifyTurnToMove();
 
-        abstract public void NotifyResult(Board.BoardState result);
+        abstract public void NotifyResult(Game.GameState result);
 
-        abstract public void Update();
+        abstract public void Update(BoardUI boardUI);
     }
 }

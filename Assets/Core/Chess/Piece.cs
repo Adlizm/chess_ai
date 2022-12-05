@@ -1,4 +1,4 @@
-namespace Game.Chess {
+namespace Core.Chess {
     public struct Piece {
         public const byte None = 0;
         public const byte Pawn = 1;
@@ -42,6 +42,9 @@ namespace Game.Chess {
             return this.Color == color;
         }
 
+        public bool IsNone {
+            get => value == None;
+        }
         public bool IsPawn {
             get => value == Pawn || value == (Pawn | White);
         }

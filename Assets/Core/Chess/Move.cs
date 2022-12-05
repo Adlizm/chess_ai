@@ -1,4 +1,4 @@
-namespace Game.Chess {
+namespace Core.Chess {
 	public struct Move{
 		public const byte NORMAL = 0;
 		public const byte DOUBLE_STEP_PAWN = 1;
@@ -38,7 +38,7 @@ namespace Game.Chess {
 		}
 	}
 
-	public struct OnPassan {
+	public struct EnPassant {
 		public bool valid;
 		public byte column;
 	}

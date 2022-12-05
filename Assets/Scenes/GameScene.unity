@@ -266,8 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c90b812796e1d04e870e8d8c585ae3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardUI: {fileID: 1493823053}
   TypeWhitePlayer: 0
   TypeBlackPlayer: 0
-  Export: 1
-  RenderBoard: 1
-  boardUI: {fileID: 1493823053}

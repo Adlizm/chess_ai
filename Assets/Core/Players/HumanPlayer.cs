@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Game.Chess;
-using Game.Utils;
+using Core.Chess;
+using Utils;
+using UI;
 
-namespace Game.Players {
+namespace Core.Players {
     public class HumanPlayer : Player {
         private enum InputState{
             None, Selected, Dragging, Promotion
@@ -25,7 +26,7 @@ namespace Game.Players {
             this.inputState = InputState.None;
         }
 
-        override public void Update() {
+        override public void Update(BoardUI boardUI) {
             Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
 
             switch(inputState) {
@@ -34,8 +35,8 @@ namespace Game.Players {
                         this.mouseDown = true;
 
                         inputState = InputState.Selected;
-                        this.boardUI.SelectSquare(squareSelected);
-                        this.boardUI.HighlightLegalMoves(squareSelected);
+                        boardUI.SelectSquare(squareSelected);
+                        boardUI.HighlightMoves(this.game.GetValidPieceMoves(squareSelected.ToBoardIndex()));
                     } else {
                         this.mouseDown = false;
                     }
@@ -44,7 +45,7 @@ namespace Game.Players {
                     if(Input.GetMouseButtonUp(0)) {
                         this.mouseDown = false;
                         inputState = InputState.None;
-                        this.boardUI.ResetSquareColours();
+                        boardUI.ResetSquareColours();
                     } else if(this.mouseDown) {
                         inputState = InputState.Dragging;
                     } else {
@@ -53,11 +54,11 @@ namespace Game.Players {
                     break;
                 case InputState.Dragging:
                     if(Input.GetMouseButtonUp(0)) {
-                        this.draggingToMouseUp(mousePosition);
-                        this.boardUI.ResetSquareColours();
+                        this.DraggingToMouseUp(mousePosition, boardUI);
+                        boardUI.ResetSquareColours();
                         this.mouseDown = false;
                     } else if(this.mouseDown) {
-                        this.boardUI.DragPiece(squareSelected, mousePosition);
+                        boardUI.DragPiece(squareSelected, mousePosition);
                     } else {
                         this.inputState = InputState.None;
                     }
@@ -74,17 +75,17 @@ namespace Game.Players {
                         promotionType = Move.PROMOTION_QUEEN;
 
                     if(Input.GetMouseButtonDown(0))
-                        this.boardUI.TryPromotion(mousePosition, out promotionType);
+                        boardUI.TryPromotion(mousePosition, out promotionType);
 
                     if(promotionType != 0) {
-                        byte selectIndex = squareSelected.toBoardIndex();
-                        byte targetIndex = squareTarget.toBoardIndex();
+                        byte selectIndex = squareSelected.ToBoardIndex();
+                        byte targetIndex = squareTarget.ToBoardIndex();
                         Move move = new Move(selectIndex, targetIndex, promotionType);
 
                         this.choseMove(move);
-                        this.boardUI.OnMoveMade(move);
+                        boardUI.OnMoveMade(move);
 
-                        this.boardUI.ClosePromotions();
+                        boardUI.ClosePromotions();
                         inputState = InputState.None;
                     }
                     break;
@@ -92,16 +93,16 @@ namespace Game.Players {
 
         }
 
-        private void draggingToMouseUp(Vector2 mousePosition) {
+        private void DraggingToMouseUp(Vector2 mousePosition, BoardUI boardUI) {
             if(boardUI.TryGetSquareUnderMouse(mousePosition, out squareTarget)) {
-                byte selectIndex = squareSelected.toBoardIndex();
-                byte targetIndex = squareTarget.toBoardIndex();
+                byte selectIndex = squareSelected.ToBoardIndex();
+                byte targetIndex = squareTarget.ToBoardIndex();
 
                 Move moveSelected = new Move(0, 0, 0);
 
-                Piece piece = this.board[selectIndex];
+                Piece piece = this.game[selectIndex];
                 if(piece.IsPawn || piece.IsKing) {
-                    List<Move> moves = this.board.GetValidPieceMoves(selectIndex);
+                    List<Move> moves = this.game.GetValidPieceMoves(selectIndex);
                     
 
                     foreach(Move move in moves) {
@@ -109,7 +110,7 @@ namespace Game.Players {
                             if(piece.IsPawn && move.type != Move.NORMAL &&
                                 move.type != Move.DOUBLE_STEP_PAWN && move.type != Move.EN_PASSANT) {
                                 inputState = InputState.Promotion;
-                                this.boardUI.ShowPromotions();
+                                boardUI.ShowPromotions(this.Color);
                             } else {
                                 this.inputState = InputState.None;
                                 moveSelected = move;
@@ -124,9 +125,9 @@ namespace Game.Players {
                     moveSelected = new Move(selectIndex, targetIndex, Move.NORMAL);
                     this.choseMove(moveSelected);
                 }
-                this.boardUI.OnMoveMade(moveSelected);
+                boardUI.OnMoveMade(moveSelected);
             } else {
-                this.boardUI.ResetPiecePosition(squareSelected);
+                boardUI.ResetPiecePosition(squareSelected);
             }
         }
 
@@ -134,12 +135,12 @@ namespace Game.Players {
             
         }
 
-        override public void NotifyResult(Board.BoardState result) {
+        override public void NotifyResult(Game.GameState result) {
             string resultString = "";
-            resultString = result == Board.BoardState.Draw ? "Draw" : "";
-            resultString = result == Board.BoardState.WhiteWin ? "White Win!" : "";
-            resultString = result == Board.BoardState.BlackWin ? "Black Win!" : "";
-            Console.WriteLine(resultString);
+            resultString = result == Game.GameState.Draw ? "Draw" : resultString;
+            resultString = result == Game.GameState.WhiteWin ? "White Win!" : resultString;
+            resultString = result == Game.GameState.BlackWin ? "Black Win!" : resultString;
+            Debug.Log(resultString);
         }
     }
 }

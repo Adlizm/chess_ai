@@ -1,15 +1,16 @@
 using System;
 
-using Game.Chess;
+using Core.Chess;
+using UI;
 
-namespace Game.Players {
+namespace Core.Players {
     public class AIPlayer : Player {
         public AIPlayer(byte color, Player.ChoseMove chose, Player.RequestDraw draw, Player.AdmitDefeat defeat)
             : base(color, chose, draw, defeat) {
 
         }
 
-        override public void Update() {
+        override public void Update(BoardUI boardUI) {
 
         }
 
@@ -17,7 +18,7 @@ namespace Game.Players {
 
         }
 
-        override public void NotifyResult(Board.BoardState result) {
+        override public void NotifyResult(Game.GameState result) {
 
         }
     }
