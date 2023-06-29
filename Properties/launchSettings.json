@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "chess-ai": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
