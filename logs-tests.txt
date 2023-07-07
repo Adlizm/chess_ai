@@ -1,0 +1,522 @@
+Total de jogos no banco de dados de jogadores
+https://www.pgnmentor.com/files.html#players
+
+Total Games 437.633 -> Read 437526
+Total Positions 23.722.255
+
+
+Loading tree saved...
+Tree Loaded
+Calculating to load triples...
+Time from load Triples = 4334 ms
+Calculating to Fit time from triples...
+313/313 [==============================] - 71s 43ms/step - loss: nan - dense_loss: nan - dense_2_loss: nan
+Time to fit triples loaded = 75905 ms
+
+313 numero de vezes que (bach_sizes amostras) foram colocadas para treinar
+
+
+Tree Loaded
+Calculating to load triples...
+Time from load Triples = 6133 ms
+Calculating to Fit time from triples...
+Input Shape: (10000, 12, 8, 8)
+Outputs Shapes: (10000, 1880) (10000, 1880)
+1/1 [==============================] - 60s 60s/step - loss: inf - dense_loss: inf - dense_2_loss: 0.3684
+Time to fit triples loaded = 66242 ms
+
+
+-----------------------------------------------------------
+
+Calculating to load triples with recursion...
+Total Triples = 375436
+Triples Load with recursion = 375436
+Time from load triples with recursion = 132167 ms
+
+
+Calculating to load triples with stack...
+Total Triples = 375436
+Triples Load with stacks = 375436
+Time from load triples with stacks = 128589 ms
+
+
+Calculating to time to load triples from collector
+Triples loaded = 375436
+Time to load triples = 2835 ms
+Time Estimeted to load 10000 triples = 75,5122 ms
+
+------------------------------------------------------------
+
+
+
+Tree Triples All= 23719323
+
+
+
+Tree Triples MinVisists 2 = 5580212
+
+
+
+Tree Triples DeepLimit 20 = 1760524
+Tree Triples DeepLimit 30 = 4870994
+Tree Triples DeepLimit 40 = 8193243
+Tree Triples DeepLimit 50 = 11349579
+
+
+
+Tree Triples (DeepLimit 20, MinVisists 2, Probability = 0) = 6751720
+Tree Triples (DeepLimit 20, MinVisists 2, Probability = 0.05) = 7600565
+Tree Triples (DeepLimit 20, MinVisists 2, Probability = 0.1) = 8449429
+Tree Triples (DeepLimit 20, MinVisists 2, Probability = 0.15) = 9295650
+
+
+
+Tree Triples (DeepLimit 30, MinVisists 2, Probability = 0) = 9116456
+Tree Triples (DeepLimit 30, MinVisists 2, Probability = 0.05) = 9846787
+Tree Triples (DeepLimit 30, MinVisists 2, Probability = 0.1) = 10577901
+Tree Triples (DeepLimit 30, MinVisists 2, Probability = 0.15) = 11305905
+
+
+
+Tree Triples (DeepLimit 30, MinVisists 3, Probability = 0) = 4895311
+Tree Triples (DeepLimit 30, MinVisists 3, Probability = 0.05) = 5836882
+Tree Triples (DeepLimit 30, MinVisists 3, Probability = 0.1) = 6778365
+Tree Triples (DeepLimit 30, MinVisists 3, Probability = 0.15) = 7718009
+
+
+
+Tree Triples (DeepLimit 20, MinVisists 3, Probability = 0) = 1876359
+Tree Triples (DeepLimit 20, MinVisists 3, Probability = 0.05) = 2968950
+Tree Triples (DeepLimit 20, MinVisists 3, Probability = 0.1) = 4061312
+Tree Triples (DeepLimit 20, MinVisists 3, Probability = 0.15) = 5152415
+
+
+
+Tree Triples (DeepLimit 30, MinVisists 4, Probability = 0) = 4884459
+Tree Triples (DeepLimit 30, MinVisists 4, Probability = 0.05) = 5826568
+Tree Triples (DeepLimit 30, MinVisists 4, Probability = 0.1) = 6768597
+Tree Triples (DeepLimit 30, MinVisists 4, Probability = 0.15) = 7708789
+
+
+
+Tree Triples (DeepLimit 25, MinVisists 4, Probability = 0) = 3267536
+Tree Triples (DeepLimit 25, MinVisists 4, Probability = 0.05) = 4290505
+Tree Triples (DeepLimit 25, MinVisists 4, Probability = 0.1) = 5313826
+Tree Triples (DeepLimit 25, MinVisists 4, Probability = 0.15) = 6335250
+
+
+
+Tree Triples (DeepLimit 20, MinVisists 4, Probability = 0) = 1828166
+Tree Triples (DeepLimit 20, MinVisists 4, Probability = 0.05) = 2923133
+Tree Triples (DeepLimit 20, MinVisists 4, Probability = 0.1) = 4017951
+Tree Triples (DeepLimit 20, MinVisists 4, Probability = 0.15) = 5111451
+
+-----------------------------------------------------------------
+
+Strategy Selected:
+	Tree Triples (DeepLimit 25, MinVisists 4, Probability = 0.1) = 5.314.474
+	Time Estimated: 103,324 horas (10 epochs)
+	One train day (Total days = 7)
+		Triples: ~ 759.211
+		Collections: ~ 186 (4096 triples p/ collection)
+		Time Estimated: 14,7605 horas (10 epocas)
+
+=============================================================
+Initing Step 0 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 255s 1s/step - loss: 0.8944 - dense_loss: 0.2572 - dense_2_loss: 0.6372
+Epoch 2/10
+200/200 [==============================] - 253s 1s/step - loss: 0.8618 - dense_loss: 0.2512 - dense_2_loss: 0.6106
+Epoch 3/10
+200/200 [==============================] - 252s 1s/step - loss: 0.8544 - dense_loss: 0.2458 - dense_2_loss: 0.6086
+Epoch 4/10
+200/200 [==============================] - 251s 1s/step - loss: 0.8482 - dense_loss: 0.2403 - dense_2_loss: 0.6079
+Epoch 5/10
+200/200 [==============================] - 251s 1s/step - loss: 0.8411 - dense_loss: 0.2346 - dense_2_loss: 0.6065
+Epoch 6/10
+200/200 [==============================] - 252s 1s/step - loss: 0.8339 - dense_loss: 0.2285 - dense_2_loss: 0.6054
+Epoch 7/10
+200/200 [==============================] - 251s 1s/step - loss: 0.8263 - dense_loss: 0.2217 - dense_2_loss: 0.6046
+Epoch 8/10
+200/200 [==============================] - 252s 1s/step - loss: 0.8169 - dense_loss: 0.2140 - dense_2_loss: 0.6029
+Epoch 9/10
+200/200 [==============================] - 252s 1s/step - loss: 0.8068 - dense_loss: 0.2055 - dense_2_loss: 0.6013
+Epoch 10/10
+200/200 [==============================] - 253s 1s/step - loss: 0.7965 - dense_loss: 0.1960 - dense_2_loss: 0.6005
+
+Initing Step 1 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 257s 1s/step - loss: 0.7913 - dense_loss: 0.1884 - dense_2_loss: 0.6029
+Epoch 2/10
+200/200 [==============================] - 252s 1s/step - loss: 0.7772 - dense_loss: 0.1765 - dense_2_loss: 0.6007
+Epoch 3/10
+200/200 [==============================] - 255s 1s/step - loss: 0.7633 - dense_loss: 0.1640 - dense_2_loss: 0.5993
+Epoch 4/10
+200/200 [==============================] - 254s 1s/step - loss: 0.7491 - dense_loss: 0.1512 - dense_2_loss: 0.5979
+Epoch 5/10
+200/200 [==============================] - 252s 1s/step - loss: 0.7351 - dense_loss: 0.1382 - dense_2_loss: 0.5970
+Epoch 6/10
+200/200 [==============================] - 253s 1s/step - loss: 0.7215 - dense_loss: 0.1252 - dense_2_loss: 0.5964
+Epoch 7/10
+200/200 [==============================] - 253s 1s/step - loss: 0.7078 - dense_loss: 0.1125 - dense_2_loss: 0.5954
+Epoch 8/10
+200/200 [==============================] - 252s 1s/step - loss: 0.6952 - dense_loss: 0.1003 - dense_2_loss: 0.5949
+Epoch 9/10
+200/200 [==============================] - 252s 1s/step - loss: 0.6829 - dense_loss: 0.0889 - dense_2_loss: 0.5941
+Epoch 10/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6723 - dense_loss: 0.0784 - dense_2_loss: 0.5939
+
+Fit Complete
+
+
+Initing Step 2 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6987 - dense_loss: 0.0684 - dense_2_loss: 0.6303
+Epoch 2/10
+200/200 [==============================] - 252s 1s/step - loss: 0.6882 - dense_loss: 0.0599 - dense_2_loss: 0.6283
+Epoch 3/10
+200/200 [==============================] - 255s 1s/step - loss: 0.6799 - dense_loss: 0.0525 - dense_2_loss: 0.6274
+Epoch 4/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6728 - dense_loss: 0.0462 - dense_2_loss: 0.6266
+Epoch 5/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6667 - dense_loss: 0.0407 - dense_2_loss: 0.6260
+Epoch 6/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6615 - dense_loss: 0.0361 - dense_2_loss: 0.6254
+Epoch 7/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6569 - dense_loss: 0.0321 - dense_2_loss: 0.6248
+Epoch 8/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6530 - dense_loss: 0.0287 - dense_2_loss: 0.6244
+Epoch 9/10
+200/200 [==============================] - 252s 1s/step - loss: 0.6499 - dense_loss: 0.0257 - dense_2_loss: 0.6242
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6473 - dense_loss: 0.0233 - dense_2_loss: 0.6241
+
+Initing Step 3 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5851 - dense_loss: 0.0231 - dense_2_loss: 0.5620
+Epoch 2/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5791 - dense_loss: 0.0202 - dense_2_loss: 0.5589
+Epoch 3/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5760 - dense_loss: 0.0183 - dense_2_loss: 0.5577
+Epoch 4/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5736 - dense_loss: 0.0167 - dense_2_loss: 0.5569
+Epoch 5/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5714 - dense_loss: 0.0154 - dense_2_loss: 0.5560
+Epoch 6/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5697 - dense_loss: 0.0142 - dense_2_loss: 0.5556
+Epoch 7/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5680 - dense_loss: 0.0132 - dense_2_loss: 0.5548
+Epoch 8/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5666 - dense_loss: 0.0122 - dense_2_loss: 0.5544
+Epoch 9/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5652 - dense_loss: 0.0114 - dense_2_loss: 0.5537
+Epoch 10/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5641 - dense_loss: 0.0107 - dense_2_loss: 0.5534
+
+Fit Complete
+
+
+Initing Step 4 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 255s 1s/step - loss: 0.6523 - dense_loss: 0.0105 - dense_2_loss: 0.6418
+Epoch 2/10
+200/200 [==============================] - 256s 1s/step - loss: 0.6490 - dense_loss: 0.0094 - dense_2_loss: 0.6396
+Epoch 3/10
+200/200 [==============================] - 252s 1s/step - loss: 0.6476 - dense_loss: 0.0089 - dense_2_loss: 0.6387
+Epoch 4/10
+200/200 [==============================] - 252s 1s/step - loss: 0.6462 - dense_loss: 0.0084 - dense_2_loss: 0.6378
+Epoch 5/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6454 - dense_loss: 0.0080 - dense_2_loss: 0.6374
+Epoch 6/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6440 - dense_loss: 0.0076 - dense_2_loss: 0.6364
+Epoch 7/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6431 - dense_loss: 0.0072 - dense_2_loss: 0.6359
+Epoch 8/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6421 - dense_loss: 0.0069 - dense_2_loss: 0.6352
+Epoch 9/10
+200/200 [==============================] - 256s 1s/step - loss: 0.6416 - dense_loss: 0.0066 - dense_2_loss: 0.6350
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6411 - dense_loss: 0.0063 - dense_2_loss: 0.6347
+
+Fit Complete
+
+Initing Step 5 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5335 - dense_loss: 0.0069 - dense_2_loss: 0.5266
+Epoch 2/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5303 - dense_loss: 0.0062 - dense_2_loss: 0.5241
+Epoch 3/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5291 - dense_loss: 0.0059 - dense_2_loss: 0.5231
+Epoch 4/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5281 - dense_loss: 0.0057 - dense_2_loss: 0.5224
+Epoch 5/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5271 - dense_loss: 0.0055 - dense_2_loss: 0.5217
+Epoch 6/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5261 - dense_loss: 0.0053 - dense_2_loss: 0.5209
+Epoch 7/10
+200/200 [==============================] - 260s 1s/step - loss: 0.5256 - dense_loss: 0.0051 - dense_2_loss: 0.5205
+Epoch 8/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5253 - dense_loss: 0.0049 - dense_2_loss: 0.5204
+Epoch 9/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5242 - dense_loss: 0.0048 - dense_2_loss: 0.5195
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5240 - dense_loss: 0.0046 - dense_2_loss: 0.5194
+
+Fit Complete
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 258s 1s/step - loss: 0.5637 - dense_loss: 0.0045 - dense_2_loss: 0.5591
+Epoch 2/10
+200/200 [==============================] - 256s 1s/step - loss: 0.5616 - dense_loss: 0.0044 - dense_2_loss: 0.5572
+Epoch 3/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5606 - dense_loss: 0.0043 - dense_2_loss: 0.5563
+Epoch 4/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5594 - dense_loss: 0.0042 - dense_2_loss: 0.5552
+Epoch 5/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5589 - dense_loss: 0.0040 - dense_2_loss: 0.5549
+Epoch 6/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5582 - dense_loss: 0.0039 - dense_2_loss: 0.5542
+Epoch 7/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5576 - dense_loss: 0.0038 - dense_2_loss: 0.5538
+Epoch 8/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5573 - dense_loss: 0.0037 - dense_2_loss: 0.5536
+Epoch 9/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5566 - dense_loss: 0.0036 - dense_2_loss: 0.5530
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5558 - dense_loss: 0.0036 - dense_2_loss: 0.5523
+
+Initing Step 7 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 258s 1s/step - loss: 0.6151 - dense_loss: 0.0037 - dense_2_loss: 0.6114
+Epoch 2/10
+200/200 [==============================] - 256s 1s/step - loss: 0.6130 - dense_loss: 0.0034 - dense_2_loss: 0.6096
+Epoch 3/10
+200/200 [==============================] - 256s 1s/step - loss: 0.6115 - dense_loss: 0.0033 - dense_2_loss: 0.6082
+Epoch 4/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6109 - dense_loss: 0.0032 - dense_2_loss: 0.6077
+Epoch 5/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6108 - dense_loss: 0.0031 - dense_2_loss: 0.6077
+Epoch 6/10
+200/200 [==============================] - 256s 1s/step - loss: 0.6096 - dense_loss: 0.0031 - dense_2_loss: 0.6066
+Epoch 7/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6094 - dense_loss: 0.0030 - dense_2_loss: 0.6064
+Epoch 8/10
+200/200 [==============================] - 254s 1s/step - loss: 0.6091 - dense_loss: 0.0029 - dense_2_loss: 0.6062
+Epoch 9/10
+200/200 [==============================] - 253s 1s/step - loss: 0.6081 - dense_loss: 0.0029 - dense_2_loss: 0.6052
+Epoch 10/10
+200/200 [==============================] - 255s 1s/step - loss: 0.6078 - dense_loss: 0.0028 - dense_2_loss: 0.6050
+
+Fit Complete
+
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 256s 1s/step - loss: 0.5463 - dense_loss: 0.0028 - dense_2_loss: 0.5435
+Epoch 2/10
+200/200 [==============================] - 259s 1s/step - loss: 0.5446 - dense_loss: 0.0027 - dense_2_loss: 0.5419
+Epoch 3/10
+200/200 [==============================] - 259s 1s/step - loss: 0.5436 - dense_loss: 0.0027 - dense_2_loss: 0.5409
+Epoch 4/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5432 - dense_loss: 0.0027 - dense_2_loss: 0.5406
+Epoch 5/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5423 - dense_loss: 0.0026 - dense_2_loss: 0.5397
+Epoch 6/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5420 - dense_loss: 0.0026 - dense_2_loss: 0.5394
+Epoch 7/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5415 - dense_loss: 0.0025 - dense_2_loss: 0.5389
+Epoch 8/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5410 - dense_loss: 0.0025 - dense_2_loss: 0.5385
+Epoch 9/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5407 - dense_loss: 0.0024 - dense_2_loss: 0.5383
+Epoch 10/10
+200/200 [==============================] - 257s 1s/step - loss: 0.5402 - dense_loss: 0.0024 - dense_2_loss: 0.5378
+
+Fit Complete
+
+Initing Step 9 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 255s 1s/step - loss: 0.6011 - dense_loss: 0.0024 - dense_2_loss: 0.5987
+Epoch 2/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5996 - dense_loss: 0.0023 - dense_2_loss: 0.5972
+Epoch 3/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5991 - dense_loss: 0.0023 - dense_2_loss: 0.5968
+Epoch 4/10
+200/200 [==============================] - 256s 1s/step - loss: 0.5983 - dense_loss: 0.0023 - dense_2_loss: 0.5961
+Epoch 5/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5978 - dense_loss: 0.0022 - dense_2_loss: 0.5955
+Epoch 6/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5975 - dense_loss: 0.0022 - dense_2_loss: 0.5953
+Epoch 7/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5967 - dense_loss: 0.0022 - dense_2_loss: 0.5946
+Epoch 8/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5963 - dense_loss: 0.0021 - dense_2_loss: 0.5941
+Epoch 9/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5957 - dense_loss: 0.0021 - dense_2_loss: 0.5936
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5960 - dense_loss: 0.0021 - dense_2_loss: 0.5939
+
+Fit Complete
+
+
+Initing Step 10 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5412 - dense_loss: 0.0021 - dense_2_loss: 0.5391
+Epoch 2/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5387 - dense_loss: 0.0021 - dense_2_loss: 0.5367
+Epoch 3/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5379 - dense_loss: 0.0020 - dense_2_loss: 0.5358
+Epoch 4/10
+200/200 [==============================] - 252s 1s/step - loss: 0.5370 - dense_loss: 0.0020 - dense_2_loss: 0.5350
+Epoch 5/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5366 - dense_loss: 0.0020 - dense_2_loss: 0.5346
+Epoch 6/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5365 - dense_loss: 0.0020 - dense_2_loss: 0.5345
+Epoch 7/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5357 - dense_loss: 0.0019 - dense_2_loss: 0.5338
+Epoch 8/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5350 - dense_loss: 0.0019 - dense_2_loss: 0.5331
+Epoch 9/10
+200/200 [==============================] - 256s 1s/step - loss: 0.5350 - dense_loss: 0.0019 - dense_2_loss: 0.5331
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5347 - dense_loss: 0.0019 - dense_2_loss: 0.5328
+
+Fit Complete
+
+Initing Step 11 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+200/200 [==============================] - 261s 1s/step - loss: 0.5458 - dense_loss: 0.0019 - dense_2_loss: 0.5439
+Epoch 2/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5444 - dense_loss: 0.0018 - dense_2_loss: 0.5425
+Epoch 3/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5436 - dense_loss: 0.0018 - dense_2_loss: 0.5418
+Epoch 4/10
+200/200 [==============================] - 255s 1s/step - loss: 0.5435 - dense_loss: 0.0018 - dense_2_loss: 0.5417
+Epoch 5/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5429 - dense_loss: 0.0018 - dense_2_loss: 0.5411
+Epoch 6/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5424 - dense_loss: 0.0018 - dense_2_loss: 0.5406
+Epoch 7/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5420 - dense_loss: 0.0017 - dense_2_loss: 0.5403
+Epoch 8/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5416 - dense_loss: 0.0017 - dense_2_loss: 0.5399
+Epoch 9/10
+200/200 [==============================] - 253s 1s/step - loss: 0.5417 - dense_loss: 0.0017 - dense_2_loss: 0.5400
+Epoch 10/10
+200/200 [==============================] - 254s 1s/step - loss: 0.5410 - dense_loss: 0.0017 - dense_2_loss: 0.5393
+
+Fit Complete
+
+
+Initing Step 12 of Training
+
+Loading Data Train
+Data Train Loaded
+
+Creating Data Input and Outputs
+Input and Outputs Created
+
+Initing Fit
+Epoch 1/10
+195/195 [==============================] - 251s 1s/step - loss: 0.5965 - dense_loss: 0.0017 - dense_2_loss: 0.5948
+Epoch 2/10
+195/195 [==============================] - 250s 1s/step - loss: 0.5950 - dense_loss: 0.0017 - dense_2_loss: 0.5933
+Epoch 3/10
+195/195 [==============================] - 247s 1s/step - loss: 0.5943 - dense_loss: 0.0016 - dense_2_loss: 0.5926
+Epoch 4/10
+195/195 [==============================] - 246s 1s/step - loss: 0.5934 - dense_loss: 0.0016 - dense_2_loss: 0.5918
+Epoch 5/10
+195/195 [==============================] - 247s 1s/step - loss: 0.5933 - dense_loss: 0.0016 - dense_2_loss: 0.5917
+Epoch 6/10
+195/195 [==============================] - 248s 1s/step - loss: 0.5931 - dense_loss: 0.0016 - dense_2_loss: 0.5915
+Epoch 7/10
+195/195 [==============================] - 246s 1s/step - loss: 0.5925 - dense_loss: 0.0016 - dense_2_loss: 0.5909
+Epoch 8/10
+195/195 [==============================] - 246s 1s/step - loss: 0.5927 - dense_loss: 0.0016 - dense_2_loss: 0.5911
+Epoch 9/10
+195/195 [==============================] - 248s 1s/step - loss: 0.5915 - dense_loss: 0.0016 - dense_2_loss: 0.5900
+Epoch 10/10
+195/195 [==============================] - 247s 1s/step - loss: 0.5911 - dense_loss: 0.0016 - dense_2_loss: 0.5896
+
+Fit Complete
